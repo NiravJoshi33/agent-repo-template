@@ -14,32 +14,9 @@ Instructions for AI coding agents (Claude Code, Codex, etc.) working in this rep
 
 ---
 
-## 🚫 CRITICAL: LSP-FIRST CODE NAVIGATION
+## 🚫 CRITICAL: Keep docs and responses short
 
-**MANDATORY: Before using Bash/grep/rg/Glob/Read for ANY symbol-based question,
-you MUST attempt LSP FIRST. This is non-negotiable.**
-
-### Symbol-based questions (LSP REQUIRED, NOT grep)
-- "Where is X defined?" → `goToDefinition`
-- "Where is X used?" / "Find all references to X" → `findReferences`
-- "What implements interface X?" → `goToImplementation`
-- "What's the type of X?" → `hover` or `goToTypeDefinition`
-- "What functions/classes are in this file?" → `documentSymbol`
-- "Find symbol X anywhere in the project" → `workspaceSymbol`
-- "What calls this function?" → `callHierarchy`
-
-### grep/Bash is ONLY allowed for
-- Plain-text search (comments, strings, config values, error messages)
-- Files outside any LSP-supported language
-- When an LSP operation has already returned an empty result
-
-### Rules
-1. If you reach for `Bash rg` or `Grep` on a symbol name, STOP. Use LSP instead.
-2. If LSP is unavailable (error), state this explicitly and confirm with the user before falling back to grep.
-3. After ANY code edit, immediately call `getDiagnostics` and fix errors in the same turn — do not wait for tests.
-4. Before refactoring, ALWAYS call `findReferences` to map impact.
-
-**Violations of this rule should be self-corrected mid-response.**
+Every doc, plan, comment, and response must be as short as possible while remaining complete. Cut filler, padding, and restatements. If it can be said in one sentence, use one sentence. Prefer bullet points over prose. No preambles, no summaries at the end, no restating what was just said.
 
 ---
 
@@ -134,7 +111,7 @@ When you're about to write code, ask yourself: *would a stranger reading this in
 
 In this order:
 1. Re-read the spec / `CLAUDE.md` / relevant ADRs.
-2. Use LSP to explore the actual code around the problem.
+2. Explore the actual code around the problem.
 3. If a library behavior is unclear, check current docs (Context7 MCP) — don't trust training data.
 4. If still unclear, stop and ask. State what you tried, what you found, and the specific question.
 
@@ -165,5 +142,4 @@ After completing a feature or adding/removing a doc, update `docs/INDEX.md`: add
 - **How to run tests:** _(command)_
 - **How to run the linter:** _(command)_
 - **How to deploy:** _(command or link to runbook)_
-- **LSP setup:** _(language server binary, install command — e.g. `npm i -g typescript typescript-language-server`)_
 - **Things NOT to touch:** _(legacy module, vendor-managed code, generated files, etc.)_
