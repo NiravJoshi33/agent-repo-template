@@ -2,8 +2,13 @@
 # PreToolUse hook: block grep/rg when it looks like a symbol search.
 # Tells the agent to use LSP instead.
 #
-# DISABLED BY DEFAULT — enable by moving the "_disabled_until_lsp_verified"
-# block in .claude/settings.json into the active "hooks" key.
+# DISABLED BY DEFAULT — once LSP is verified, enable it by adding to
+# .claude/settings.json:
+#   "hooks": { "PreToolUse": [{ "matcher": "Bash",
+#     "hooks": [{ "type": "command",
+#       "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/block-grep-for-symbols.sh" }] }] }
+# Don't park it under a made-up key inside "hooks": Claude Code validates every
+# key there as an event name and skips the whole block if one is unknown.
 #
 # Requires: jq (brew install jq)
 
