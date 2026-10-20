@@ -1,3 +1,7 @@
+# Personal agent instructions (local only, see CLAUDE.md)
+/internal/
+/docs/internal/
+
 # Logs
 logs
 *.log

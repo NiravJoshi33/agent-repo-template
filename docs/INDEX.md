@@ -12,4 +12,5 @@ Load only what's relevant to your task.
 | `adr/` | Architecture decision records | Task touches a past architectural decision |
 | `specs/` | Feature specs | Implementing or modifying a specific feature |
 | `runbooks/` | Incident runbooks | Debugging production or modifying observability |
+| `internal/` | Personal working habits (gitignored, local only) | **Always** — see CLAUDE.md |
 | `archive/` | Archived docs | **NEVER** — unless explicitly asked |
